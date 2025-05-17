@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>이미지 텍스트 번역기</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.1.4/dist/tesseract.min.js"></script>
+</head>
+
+<body>
+  <h1>이미지 텍스트 번역기</h1>
+
+  <!-- 언어 선택 -->
+  <div class="language-select">
+    <select id="detected-lang">
+      <option value="eng">영어</option>
+      <option value="kor">한국어</option>
+      <option value="jpn">일본어</option>
+    </select>
+    <span class="arrow">⟶</span>
+    <select id="target-lang">
+      <option value="ko">한국어</option>
+      <option value="en">영어</option>
+      <option value="ja">일본어</option>
+    </select>
+  </div>
+
+  <!-- 이미지 입력 -->
+  <div class="input-methods">
+    <div class="input-group">
+      <label>이미지 URL 입력</label>
+      <input type="text" id="image-url" placeholder="이미지 주소 입력" />
+      <button id="load-url-btn">불러오기</button>
+    </div>
+    <div class="input-group">
+      <label>이미지 파일 선택</label>
+      <input type="file" id="image-input" accept="image/*" />
+    </div>
+  </div>
+
+  <!-- 미리보기 -->
+  <img id="image-preview" style="display: none;" />
+
+  <!-- 감지 텍스트 -->
+  <div class="text-section">
+    <label>감지된 텍스트
+      <button id="reset-text-btn" title="원래대로">🔄</button>
+    </label>
+    <div class="text-area-wrapper">
+      <textarea id="extracted-text" placeholder="이 부분에 감지된 텍스트가 입력됩니다."></textarea>
+    </div>
+  </div>
+
+  <!-- 번역 결과 -->
+  <div class="translation-section">
+    <label>번역 결과</label>
+    <button id="copy-btn">클립보드에 복사하기</button>
+    <div id="translated-text" class="placeholder">이 부분에 번역된 텍스트가 입력됩니다.</div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
